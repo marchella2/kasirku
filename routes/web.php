@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\BarangController;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\TestController;
 use Illuminate\Support\Facades\Route;
 
@@ -24,3 +26,5 @@ Auth::routes();
 Route::get('/dashboard', [TestController::class, 'index']);
 
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::resource('barang', BarangController::class);

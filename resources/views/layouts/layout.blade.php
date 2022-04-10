@@ -34,19 +34,29 @@
         <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
 
-             <!-- Topbar -->
-             @include('layouts.topbar')
-             <!-- End of Topbar -->
+             <div id="content">
+                <!-- Topbar -->
+                @include('layouts.topbar')
+                <!-- End of Topbar -->
+
+                <!-- Page Content -->
+                <div class="container-fluid">
+                    <div class="section-header">
+                        @yield('pagetitle')
+                    </div>
+                    @yield('pagecontent')
+                </div>
+             </div>
 
             <!-- Footer -->
-            @include('layouts.footer')
+                @include('layouts.footer')
             <!-- End of Footer -->
-
         </div>
         <!-- End of Content Wrapper -->
 
     </div>
     <!-- End of Page Wrapper -->
+
 
     <!-- Scroll to Top Button-->
     <a class="scroll-to-top rounded" href="#page-top">

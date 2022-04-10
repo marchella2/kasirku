@@ -28,7 +28,7 @@
 
     <!-- Nav Item - Data Master -->
     <li class="nav-item">
-        <a class="nav-link" href="#">
+        <a class="nav-link" href="{{ route('barang.index') }}">
             <i class="fa fa-shopping-cart"></i>
             <span>Data Produk</span></a>
     </li>
