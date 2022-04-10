@@ -9,7 +9,7 @@
 @section('pagecontent')
     <div class="row">
         <div class="col-12 col-md-12 col-lg-12">
-            <a href="{{ route('barang.create') }}" class="btn btn-icon icon-left btn-primary"><i class="far fa-edit"></i>Tambah Data</a>
+            <a href="{{ route('barang.create') }}" class="btn btn-icon icon-left btn-primary"><i class="fa fa-plus"></i> Tambah Data</a>
             <div class="card my-3">
                 <div class="card-body">
                     <table class="table table-striped table-bordered table-md">
@@ -30,7 +30,7 @@
                                 <td>
                                     <form action="{{ route('barang.destroy', [$item->id])}}" method="post">
                                         <a href="{{ route('barang.show', [$item->id]) }}" class="btn btn-icon btn-info"><i class="fa fa-eye"></i></a>
-                                        <a href="{{ route('barang.edit', [$item->id]) }}" class="btn btn-icon btn-warning"><i class="fa fa-pencil-square-o"></i></a>
+                                        <a href="{{ route('barang.edit', [$item->id]) }}" class="btn btn-icon btn-warning"><i class="far fa-edit"></i></a>
                                         @csrf
                                         @method('DELETE')
                                         <button class="btn btn-icon btn-danger" onclick="return confirm('Apakah anda yakin ingin menghapus data ini?')"><i class="fa fa-trash" aria-hidden="true"></i></button>

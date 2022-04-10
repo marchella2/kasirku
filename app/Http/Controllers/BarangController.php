@@ -25,7 +25,7 @@ class BarangController extends Controller
      */
     public function create()
     {
-        //
+        return view('products.create');
     }
 
     /**
@@ -36,7 +36,17 @@ class BarangController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'nama_barang' => 'required',
+            'harga_satuan' => 'required',
+        ]);
+
+        Barang::create([
+            'nama_barang' => $request->nama_barang,
+            'harga_satuan' => $request->harga_satuan,
+        ]);
+
+        return redirect()->route('barang.index')->with('success', 'Data berhasil ditambahkan');
     }
 
     /**
