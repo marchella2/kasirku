@@ -49,7 +49,7 @@
 
     <!-- Nav Item - Transaksi -->
     <li class="nav-item">
-        <a class="nav-link" href="#">
+        <a class="nav-link" href="{{ route('transaksi.create') }}">
             <i class="fa fa-cart-plus"></i>
             <span>Input Transaksi</span></a>
     </li>
