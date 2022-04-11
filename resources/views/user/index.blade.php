@@ -34,7 +34,11 @@
                                 <td>{{ $item->name }}</td>
                                 <td>{{ $item->username }}</td>
                                 <td>{{ $item->email }}</td>
-                                <td>{{ $item->level }}</td>
+                                @if($item->level == 'kasir'){
+                                    <td>Kasir</td>
+                                }@elseif ($item->level == 'admin-kasir')
+                                    <td>Admin Kasir</td>
+                                @endif
                                 <td>
                                     <form action="{{ route('user.destroy', [$item->id])}}" method="post">
                                         <a href="{{ route('user.show', [$item->id]) }}" class="btn btn-icon btn-info"><i class="fa fa-eye"></i></a>

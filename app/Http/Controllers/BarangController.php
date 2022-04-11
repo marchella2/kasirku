@@ -46,7 +46,7 @@ class BarangController extends Controller
             'harga_satuan' => $request->harga_satuan,
         ]);
 
-        return redirect()->route('data-barang')->with('success', 'Data berhasil ditambahkan');
+        return redirect()->route('barang.index')->with('success', 'Data berhasil ditambahkan');
     }
 
     /**

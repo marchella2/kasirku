@@ -36,7 +36,23 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'username' => 'required',
+            'email' => 'required',
+            'level' => 'required',
+            'password' => 'required|min:6',
+        ]);
+
+        User::create([
+            'name' => $request->name,
+            'username' => $request->username,
+            'email' => $request->email,
+            'level' => $request->level,
+            'password' => $request->password,
+        ]);
+
+        return redirect()->route('user.index')->with('success', 'Data berhasil ditambahkan');
     }
 
     /**
