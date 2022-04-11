@@ -16,14 +16,14 @@
                         <div class="form-group row">
                             <label class="col-md-3 col-form-label">Nama Produk</label>
                             <div class="col-md-9">
-                                <input type="text" class="form-control" name="nama_barang" placeholder="Masukkan nama produk">
+                                <input type="text" class="form-control" name="nama_barang" placeholder="Masukkan nama produk" required>
                             </div>
                         </div>
 
                         <div class="form-group row">
                             <label class="col-md-3 col-form-label">Harga Produk (satuan)</label>
                             <div class="col-md-9">
-                                <input type="number" class="form-control" name="harga_satuan" placeholder="Masukkan harga barang (dalam bentuk rupiah)">
+                                <input type="number" class="form-control" name="harga_satuan" placeholder="Masukkan harga barang (dalam bentuk rupiah)" required>
                             </div>
                         </div>
                     </div>
