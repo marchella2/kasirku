@@ -30,7 +30,7 @@
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
                                 <td>{{ $item->nama_barang }}</td>
-                                <td>{{ $item->harga_satuan }}</td>
+                                <td>Rp. {{ $item->harga_satuan }}</td>
                                 <td>
                                     <form action="{{ route('barang.destroy', [$item->id])}}" method="post">
                                         <a href="{{ route('barang.show', [$item->id]) }}" class="btn btn-icon btn-info"><i class="fa fa-eye"></i></a>
