@@ -31,6 +31,7 @@
                     <div class="card-footer">
                         <button class="btn btn-success" type="submit">Simpan</button>
                         <button class="btn btn-secondary" type="reset">Reset</button>
+                        <a href="{{ route('barang.index') }}" class="btn btn-danger">Back</a>
                     </div>
                 </form>
             </div>
