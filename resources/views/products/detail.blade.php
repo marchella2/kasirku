@@ -1,9 +1,9 @@
 @extends('layouts.layout')
 
-@section('title', 'Edit Produk')
+@section('title', 'Detail Produk')
 
 @section('pagetitle')
-    <h3>Edit Produk</h3>
+    <h3>Detail Produk</h3>
 @endsection
 
 @section('pagecontent')
@@ -27,8 +27,7 @@
             </div>
 
             <div class="card-footer">
-                <button class="btn btn-success" type="submit">Simpan</button>
-                <button class="btn btn-secondary" type="reset">Reset</button>
+                <a href="{{ route('barang.index') }}" class="btn btn-danger">Back</a>
             </div>
         </div>
     </div>

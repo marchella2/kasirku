@@ -46,7 +46,7 @@ class BarangController extends Controller
             'harga_satuan' => $request->harga_satuan,
         ]);
 
-        return redirect()->route('barang.index')->with('success', 'Data berhasil ditambahkan');
+        return redirect()->route('data-barang')->with('success', 'Data berhasil ditambahkan');
     }
 
     /**
@@ -55,9 +55,10 @@ class BarangController extends Controller
      * @param  \App\Models\Barang  $barang
      * @return \Illuminate\Http\Response
      */
-    public function show(Barang $barang)
+    public function show($id)
     {
-        //
+        $barang = Barang::find($id);
+        return view('products.detail', compact('barang'));
     }
 
     /**
@@ -68,7 +69,7 @@ class BarangController extends Controller
      */
     public function edit(Barang $barang)
     {
-        //
+        return view('products.edit', compact('barang'));
     }
 
     /**
