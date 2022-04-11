@@ -81,7 +81,14 @@ class BarangController extends Controller
      */
     public function update(Request $request, Barang $barang)
     {
-        //
+        $request->validate([
+            'nama_barang' => 'required',
+            'harga_satuan' => 'required',
+        ]);
+
+        $barang->update($request->all());
+
+        return redirect()->route('barang.index')->with('success', 'Data telah diubah');
     }
 
     /**
