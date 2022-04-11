@@ -30,14 +30,14 @@
                     <div class="form-group row">
                         <label class="col-md-3 col-form-label">Email</label>
                         <div class="col-md-9">
-                            <input type="email" name="email" class="form-control" placeholder="Masukkan email">
+                            <input type="email" name="email" class="form-control" placeholder="Masukkan email" required>
                         </div>
                     </div>
 
                     <div class="form-group row">
                         <label class="col-md-3 col-form-label">Role</label>
                         <div class="col-md-9">
-                            <select name="level" class="form-control" type="text">
+                            <select name="level" class="form-control" type="text" required>
                                 <option value disable>== Pilih Role ==</option>
                                 <option value="kasir">Kasir</option>
                                 <option value="admin-kasir">Admin Kasir</option>
@@ -48,7 +48,7 @@
                     <div class="form-group row">
                         <label class="col-md-3 col-form-label">Password</label>
                         <div class="col-md-9">
-                            <input type="password" name="password" class="form-control" placeholder="Masukkan password">
+                            <input type="password" name="password" class="form-control" placeholder="Masukkan password" required>
                         </div>
                     </div>
                 </div>

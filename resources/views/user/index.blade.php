@@ -34,9 +34,9 @@
                                 <td>{{ $item->name }}</td>
                                 <td>{{ $item->username }}</td>
                                 <td>{{ $item->email }}</td>
-                                @if($item->level == 'kasir'){
+                                @if($item->level == 'kasir')
                                     <td>Kasir</td>
-                                }@elseif ($item->level == 'admin-kasir')
+                                @elseif ($item->level == 'admin-kasir')
                                     <td>Admin Kasir</td>
                                 @endif
                                 <td>
