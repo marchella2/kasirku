@@ -20,6 +20,9 @@
     <!-- Custom styles for this template-->
     <link href="{{ asset('assets/css/sb-admin-2.min.css') }}" rel="stylesheet">
 
+    <!-- Libraries CSS -->
+    @yield('css')
+
 </head>
 
 <body id="page-top">
@@ -93,6 +96,11 @@
     <!-- Custom scripts for all pages-->
     <script src="{{ asset('assets/js/sb-admin-2.min.js') }}"></script>
 
+    <!-- Libraries JS -->
+    @yield('scripts')
+
+    <!-- Data tables -->
+    @stack('page_scripts')
 </body>
 
 </html>

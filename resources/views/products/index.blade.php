@@ -1,6 +1,10 @@
 @extends('layouts.layout')
 
 @section('title', 'Data Produk')
+@section('css')
+<link rel="stylesheet" type="text/css" href="{{ asset('https://cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css') }}">
+<link rel="stylesheet" href="{{ asset('https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap4.min.css') }}">
+@endsection
 
 @section('pagetitle')
     <h3>Data Produk</h3>
@@ -12,7 +16,7 @@
             <a href="{{ route('barang.create') }}" class="btn btn-icon icon-left btn-primary"><i class="fa fa-plus"></i> Tambah Data</a>
             <div class="card my-3">
                 <div class="card-body">
-                    <table class="table table-striped table-bordered table-md">
+                    <table id="datatable" class="table table-striped table-bordered table-md">
                         <thead>
                             <tr>
                                 <th>No</th>
@@ -46,3 +50,18 @@
 
     </div>
 @endsection
+
+@section('scripts')
+    <script type="text/javascript" charset="utf8" src="{{ asset('https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap4.min.js') }}"></script>
+@endsection
+
+@push('page_scripts')
+    <script>
+        $(document).ready( function () {
+            $('#datatable').DataTable();
+        } );
+    </script>
+@endpush
+
+
