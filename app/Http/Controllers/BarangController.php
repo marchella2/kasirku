@@ -99,6 +99,8 @@ class BarangController extends Controller
      */
     public function destroy(Barang $barang)
     {
-        //
+        $barang->delete();
+
+        return redirect()->route('barang.index')->with('success', 'Data berhasil dihapus');
     }
 }
