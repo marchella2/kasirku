@@ -15,7 +15,7 @@ class Barang extends Model
     protected $fillable = ['nama_barang', 'harga_satuan'];
 
     public function cart(){
-        return $this->hasMany(Cart::class);
+        return $this->hasMany(Cart::class, 'id');
     }
 
     public function transactions(){

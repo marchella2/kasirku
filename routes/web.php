@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\BarangController;
+use App\Http\Controllers\CartController;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\TestController;
 use App\Http\Controllers\TransactionDetailController;
@@ -31,4 +32,4 @@ Route::get('/dashboard', [TestController::class, 'index']);
 
 Route::resource('barang', BarangController::class);
 Route::resource('user', UserController::class);
-Route::resource('transaksi', TransactionDetailController::class);
+Route::resource('cart-transaksi', CartController::class);

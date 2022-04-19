@@ -14,7 +14,8 @@ class CartController extends Controller
      */
     public function index()
     {
-        //
+        $keranjang = Cart::with('barang')->orderBy('created_at', 'DESC')->get();
+        return view('transactions.index', compact('keranjang'));
     }
 
     /**
@@ -24,7 +25,9 @@ class CartController extends Controller
      */
     public function create()
     {
-        //
+        // $keranjang = Cart::with('master_barang')->orderBy('created_at', 'DESC')->get();
+
+        // return view('transactions.create', compact('carts'));
     }
 
     /**
@@ -35,9 +38,16 @@ class CartController extends Controller
      */
     public function store(Request $request)
     {
-        if($request()->master_barang_id){
-            Cart::create($request()->all());
-        }
+        $this->validate($request, [
+            'master_barang_id' => 'required',
+            'quantity' => 'required',
+        ]);
+
+        Cart::create([
+            'master_barang_id' => $request->master_barang_id,
+            'quantity' => $request->quantity,
+        ]);
+        return redirect()->back();
     }
 
     /**

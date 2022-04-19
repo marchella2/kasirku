@@ -11,16 +11,16 @@
         <div class="col-md-6 mb-4">
             <div class="card">
                 <div class="card-body">
-                    <form action="">
+                    <form action="{{ route('cart-transaksi.store') }}" class="form-horizontal" method="POST">
                         @csrf
-                        <button type="button" class="btn btn-info mb-2" id="addProduct"><i class="fa fa-plus"></i> Tambah Barang</button>
+                        {{-- <button type="button" class="btn btn-info mb-2" id="addProduct"><i class="fa fa-plus"></i></button> --}}
 
                         <div class="form-group row" id="block">
                             <label class="col-md-4 form-label" for="master_barang_id">Nama Produk</label>
                             <div class="col-md-8">
-                                <select name="master_barang_id[]" id="master_barang_id" class="form-control" type="text" required>
+                                <select name="master_barang_id" id="master_barang_id" class="form-control" type="text" required>
                                     <option value disable>== Pilih Produk ==</option>
-                                    @foreach ($barang as $item)
+                                    @foreach (App\Models\Barang::all() as $item)
                                         <option value="{{ $item->id }}">{{ $item->nama_barang }} - {{ $item->harga_satuan }}</option>
                                     @endforeach
                                 </select>
@@ -30,7 +30,7 @@
                         <div class="form-group row" id="block">
                             <label class="col-md-4 form-label" for="master_barang_id">Jumlah Pembelian</label>
                             <div class="col-md-8">
-                                <input type="number" min="1" class="form-control" name="jumlah" placeholder="Masukkan jumlah" required>
+                                <input type="number" min="1" class="form-control" name="quantity" placeholder="Masukkan jumlah" required>
                             </div>
                         </div>
 
@@ -53,6 +53,12 @@
                             <input type="text" value="" class="form-control" readonly>
                         </div>
                     </div>
+
+                    <div class="form-group row justify-content-md-end">
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                            <button class="btn btn-primary me-md-2" type="button">Bayar</button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -63,23 +69,20 @@
                     <th scope="col">#</th>
                     <th scope="col">Nama Barang</th>
                     <th scope="col">Jumlah</th>
+                    <th scope="col">Harga Satuan</th>
                     <th scope="col">Subtotal</th>
                     <th scope="col">Opsi</th>
                 </tr>
             </thead>
-            {{-- <tbody>
-                @foreach($itemCarts as $item)
+            <tbody>
+                @foreach($keranjang as $item)
                     <tr>
                         <th scope="row">{{ $loop->iteration }}</th>
-                        <td>{{ $item->name }}</td>
-                        <td>{{ $item->category->name }}</td>
-                        <td>
-                            <img src="{{ asset($item->image) }}" width="50px" height="50px">
-                        </td>
-                        <td>Rp {{ $item->price }}</td>
-                        <td>{{ $item->cart->quantity }}</td>
-                        <td>Rp {{ $item->price * $item->cart->quantity }}</td>
-                        <td>
+                        <td>{{ $item->barang->nama_barang }}</td>
+                        <td>{{ $item->quantity }}</td>
+                        <td>Rp {{ $item->barang->harga_satuan }}</td>
+                        <td>Rp {{ $item->barang->harga_satuan * $item->quantity }}</td>
+                        {{-- <td>
                             <button class="btn btn-sm btn-primary" data-toggle="modal" data-target="#ubahJumlah{{ $loop->iteration }}">Ubah</button>
                             <form action="{{ route('cart.destroy', $item->cart) }}" method="post" class="d-inline">
                                 @csrf
@@ -117,15 +120,15 @@
                                     </div>
                                 </div>
                             </div>
-                        </td>
+                        </td> --}}
                     </tr>
 
                 @endforeach
-            </tbody> --}}
+            </tbody>
         </table>
     </div>
 @endsection
-@push('page_scripts')
+{{-- @push('page_scripts')
     <script>
         $('#addProduct').click(function() {
             $('#block:last').before('<div class="form-group row" id="block">' +
@@ -148,4 +151,4 @@
                 );
         });
     </script>
-@endpush
+@endpush --}}

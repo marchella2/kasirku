@@ -10,8 +10,9 @@ class Cart extends Model
 {
     use HasFactory;
     protected $table = 'cart';
+    protected $fillable = ['master_barang_id', 'quantity'];
 
     public function barang(){
-        return $this->belongsTo(Barang::class);
+        return $this->belongsTo(Barang::class, 'master_barang_id');
     }
 }
