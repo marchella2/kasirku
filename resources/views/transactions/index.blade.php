@@ -82,45 +82,46 @@
                         <td>{{ $item->quantity }}</td>
                         <td>Rp {{ $item->barang->harga_satuan }}</td>
                         <td>Rp {{ $item->barang->harga_satuan * $item->quantity }}</td>
-                        {{-- <td>
+                        <td>
                             <button class="btn btn-sm btn-primary" data-toggle="modal" data-target="#ubahJumlah{{ $loop->iteration }}">Ubah</button>
-                            <form action="{{ route('cart.destroy', $item->cart) }}" method="post" class="d-inline">
+                            <form action="{{ route('cart-transaksi.destroy', [$item->id]) }}" method="post" class="d-inline">
                                 @csrf
                                 @method('DELETE')
 
-                                <button type="submit" class="btn btn-sm btn-danger">Hapus</button>
+                                <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Apakah anda yakin ingin menghapus data ini?')">Hapus</button>
                             </form>
 
                             <div class="modal fade" id="ubahJumlah{{ $loop->iteration }}">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
                                         <div class="modal-header">
-                                            <h5 class="modal-title">Ubah Jumlah '{{ $item->name }}'</h5>
+                                            <h5 class="modal-title">Ubah Jumlah '{{ $item->barang->nama_barang }}'</h5>
                                             <button type="button" class="close" data-dismiss="modal">
                                                 <span aria-hidden="true">&times;</span>
                                             </button>
                                         </div>
-
-                                        <div class="modal-body">
-                                            <form action="{{ route('cart.update', $item->cart) }}" method="post">
-                                                @csrf
-                                                @method('PATCH')
-
+                                        <form action="{{ route('cart-transaksi.update', [$item->id  ]) }}" method="POST">
+                                            @csrf
+                                            @method('PUT')
+                                            <div class="modal-body">
                                                 <div class="form-group">
                                                     <div class="input-group">
-                                                        <input type="number" min="1" max="{{ $item->stock }}" value="{{ $item->cart->quantity }}" class="form-control" name="quantity" placeholder="Masukkan jumlah..." required>
+                                                        <input type="number" min="1" value="{{ $item->quantity }}" class="form-control" name="quantity" placeholder="Masukkan jumlah..." required>
                                                         <div class="input-group-append">
-                                                            <span class="input-group-text">Unit</span>
-                                                            <button type="submit" class="btn btn-primary float-right">Ubah</button>
+                                                            <span class="input-group-text">Jumlah</span>
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </form>
-                                        </div>
+                                            </div>
+
+                                            <div class="modal-footer">
+                                                <button type="submit" class="btn btn-primary float-right">Ubah</button>
+                                            </div>
+                                        </form>
                                     </div>
                                 </div>
                             </div>
-                        </td> --}}
+                        </td>
                     </tr>
 
                 @endforeach

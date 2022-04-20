@@ -81,7 +81,12 @@ class CartController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $cart = Cart::find($id);
+        $cart->update([
+            'quantity' => $request->quantity,
+        ]);
+
+        return redirect()->route('cart-transaksi.index')->with('success', 'Data berhasil diubah');
     }
 
     /**
@@ -92,6 +97,9 @@ class CartController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $cart = Cart::find($id);
+        $cart->delete();
+
+        return redirect()->route('cart-transaksi.index')->with('success', 'Data berhasil dihapus');
     }
 }
