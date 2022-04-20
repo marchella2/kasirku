@@ -40,13 +40,13 @@
               <div class="col-lg-6">
                 <div class="p-5">
                   <div class="text-center">
-                    <h1 class="h4 text-gray-900 mb-4">Welcome</h1>
+                    <h1 class="h4 text-gray-900 mb-4">Aplikasi Kasirku</h1>
                   </div>
                   <form method="post" class="user" action="{{ route('login') }}">
                     @csrf
                     <div class="form-group">
-                        <input type="text" name="email" class="form-control form-control-user @error('email') is-invalid @enderror" placeholder="Email / Username">
-                        @error('email')
+                        <input type="text" name="username" class="form-control form-control-user @error('username') is-invalid @enderror" placeholder="Email / Username">
+                        @error('username')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
