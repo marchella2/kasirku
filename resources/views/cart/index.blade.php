@@ -47,21 +47,24 @@
         <div class="col-md-6 mb-4">
             <div class="card">
                 <div class="card-body">
-                    <div class="form-group row">
-                        <label class="col-md-3 form-label">Total Harga</label>
-                        <div class="col-md-9">
-                            <input type="number" value="{{ $keranjang->sum(function ($item) {
-                                return $item->barang->harga_satuan * $item->quantity;
-                            })
-                            }}" class="form-control" readonly>
+                    <form action="{{ route('transaksi.store') }}" method="POST">
+                    @csrf
+                        <div class="form-group row">
+                            <label class="col-md-3 form-label">Total Harga</label>
+                            <div class="col-md-9">
+                                <input type="number" name="total_harga" value="{{ $keranjang->sum(function ($item) {
+                                    return $item->barang->harga_satuan * $item->quantity;
+                                })
+                                }}" class="form-control" readonly>
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="form-group row justify-content-md-end">
-                        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                            <button class="btn btn-primary me-md-2" type="button">Bayar</button>
+                        <div class="form-group row justify-content-md-end">
+                            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                                <button class="btn btn-primary me-md-2" type="submit">Bayar</button>
+                            </div>
                         </div>
-                    </div>
+                    </form>
                 </div>
             </div>
         </div>

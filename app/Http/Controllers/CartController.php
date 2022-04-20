@@ -15,7 +15,7 @@ class CartController extends Controller
     public function index()
     {
         $keranjang = Cart::with('barang')->get();
-        return view('transactions.index', compact('keranjang'));
+        return view('cart.index', compact('keranjang'));
     }
 
     /**

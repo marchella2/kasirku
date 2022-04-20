@@ -2,7 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Cart;
+use App\Models\Transaction;
+use App\Models\TransactionDetail;
+use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class TransactionController extends Controller
 {
@@ -32,9 +37,33 @@ class TransactionController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store()
     {
-        //
+        DB::beginTransaction();
+
+        try{
+            Transaction::create(request()->all())
+            ->transactionDetails()
+            ->createMany(Cart::all()->map(function ($cart) {
+                return [
+                    'master_barang_id' => $cart->master_barang_id,
+                    'jumlah' => $cart->quantity,
+                    'harga_satuan' => $cart->barang->harga_satuan
+                ];
+            })->toArray());
+
+            // Delete data in cart table
+            DB::table('cart')->delete();
+
+            DB::commit();
+        } catch (Exception $e){
+            DB::rollback();
+        }
+
+        $transaction = Transaction::latest()->first();
+        $product = TransactionDetail::with('barang')->get();
+        // return redirect()->route('transaksi.show', $transaction);
+        return view('transaction.show', compact('transaction', 'product'));
     }
 
     /**
@@ -43,9 +72,9 @@ class TransactionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Transaction $transaction)
     {
-        //
+        return view('transaction.show', compact('transaction'));
     }
 
     /**

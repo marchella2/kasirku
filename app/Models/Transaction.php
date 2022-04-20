@@ -13,6 +13,6 @@ class Transaction extends Model
     protected $guarded = [];
 
     public function transactionDetails(){
-        return $this->hasMany(TransactionDetail::class);
+        return $this->hasMany(TransactionDetail::class, 'transaksi_pembelian_id');
     }
 }
