@@ -21,26 +21,28 @@
     <!-- Divider -->
     <hr class="sidebar-divider">
 
-    <!-- Heading -->
-    <div class="sidebar-heading">
-        Data Master
-    </div>
+    @if (Auth::user()->level=='admin-kasir')
+        <!-- Heading -->
+        <div class="sidebar-heading">
+            Data Master
+        </div>
 
-    <!-- Nav Item - Data Master -->
-    <li class="nav-item">
-        <a class="nav-link" href="{{ route('barang.index') }}">
-            <i class="fa fa-shopping-cart"></i>
-            <span>Data Produk</span></a>
-    </li>
+        <!-- Nav Item - Data Master -->
+        <li class="nav-item">
+            <a class="nav-link" href="{{ route('barang.index') }}">
+                <i class="fa fa-shopping-cart"></i>
+                <span>Data Produk</span></a>
+        </li>
 
-    <li class="nav-item">
-        <a class="nav-link" href="{{ route('user.index') }}">
-            <i class="fa fa-user"></i>
-            <span>Data User</span></a>
-    </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{ route('user.index') }}">
+                <i class="fa fa-user"></i>
+                <span>Data User</span></a>
+        </li>
 
-    <!-- Divider -->
-    <hr class="sidebar-divider">
+        <!-- Divider -->
+        <hr class="sidebar-divider">
+    @endif
 
     <!-- Heading -->
     <div class="sidebar-heading">

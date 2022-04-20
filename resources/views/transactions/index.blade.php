@@ -50,7 +50,10 @@
                     <div class="form-group row">
                         <label class="col-md-3 form-label">Total Harga</label>
                         <div class="col-md-9">
-                            <input type="text" value="" class="form-control" readonly>
+                            <input type="number" value="{{ $keranjang->sum(function ($item) {
+                                return $item->barang->harga_satuan * $item->quantity;
+                            })
+                            }}" class="form-control" readonly>
                         </div>
                     </div>
 

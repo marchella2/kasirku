@@ -14,7 +14,7 @@ class CartController extends Controller
      */
     public function index()
     {
-        $keranjang = Cart::with('barang')->orderBy('created_at', 'DESC')->get();
+        $keranjang = Cart::with('barang')->get();
         return view('transactions.index', compact('keranjang'));
     }
 
@@ -25,9 +25,7 @@ class CartController extends Controller
      */
     public function create()
     {
-        // $keranjang = Cart::with('master_barang')->orderBy('created_at', 'DESC')->get();
 
-        // return view('transactions.create', compact('carts'));
     }
 
     /**
