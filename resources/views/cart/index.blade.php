@@ -59,6 +59,13 @@
                             </div>
                         </div>
 
+                        <div class="form-group row">
+                            <label class="col-md-3 form-label">Total Bayar</label>
+                            <div class="col-md-9">
+                                <input type="number" name="total_bayar" class="form-control" placeholder="Masukkan total bayar">
+                            </div>
+                        </div>
+
                         <div class="form-group row justify-content-md-end">
                             <div class="d-grid gap-2 d-md-flex justify-content-md-end">
                                 <button class="btn btn-primary me-md-2" type="submit">Bayar</button>
