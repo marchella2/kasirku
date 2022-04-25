@@ -29,7 +29,8 @@
                             @foreach ($transaction->transactionDetails as $detail)
                                 <tr>
                                     <th scope="row">{{ $loop->iteration }}</th>
-                                    <td>{{ $detail->barang->nama_barang }}</td>
+                                    {{-- <td>{{ $detail->master_barang_id }}</td> --}}
+                                    <td>{{ $detail->barang['nama_barang'] }}</td>
                                     <td>{{ $detail->jumlah }}</td>
                                     <td>{{ $detail->harga_satuan }}</td>
                                     <td>{{ $detail->harga_satuan * $detail->jumlah }}</td>
