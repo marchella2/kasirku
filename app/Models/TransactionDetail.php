@@ -15,7 +15,7 @@ class TransactionDetail extends Model
     protected $guarded = [];
 
     public function barang(){
-        return $this->belongsTo(Barang::class);
+        return $this->belongsTo(Barang::class, 'master_barang_id');
     }
 
     public function transaction(){

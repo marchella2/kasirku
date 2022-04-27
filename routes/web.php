@@ -33,3 +33,5 @@ Route::resource('barang', BarangController::class);
 Route::resource('user', UserController::class);
 Route::resource('cart-transaksi', CartController::class);
 Route::resource('transaksi', TransactionController::class);
+
+Route::get('/print-struk', [TransactionController::class, 'print_struk'])->name('print-struk');

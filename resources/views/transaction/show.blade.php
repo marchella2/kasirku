@@ -29,7 +29,7 @@
                             @foreach ($transaction->transactionDetails as $detail)
                                 <tr>
                                     <th scope="row">{{ $loop->iteration }}</th>
-                                    <td>{{ $detail->barang->nama_barang }}</td>
+                                    <td>{{ $detail->barang['nama_barang'] }}</td>
                                     <td>{{ $detail->jumlah }}</td>
                                     <td>{{ $detail->harga_satuan }}</td>
                                     <td>{{ $detail->harga_satuan * $detail->jumlah }}</td>
@@ -37,6 +37,13 @@
                             @endforeach
                         </tbody>
                     </table>
+
+                    <div class="float-left">
+                        <h5>Total Harga: <b>{{ $transaction->total_harga }}</b></h5>
+                        <h5>Total Pembayaran: <b>{{ $transaction->total_bayar }}</b></h5>
+                        <h5>Kembalian : <b>{{ $transaction->total_bayar - $transaction->total_harga }}</b></h5>
+                        <a href="{{ route('print-struk') }}" class="btn btn-success">Print Struk</a>
+                    </div>
                 </div>
             </div>
         </div>

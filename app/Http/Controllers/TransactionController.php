@@ -8,6 +8,7 @@ use App\Models\TransactionDetail;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class TransactionController extends Controller
 {
@@ -109,5 +110,12 @@ class TransactionController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function print_struk(){
+        $transaction = Transaction::latest()->first();
+        $struk = PDF::loadView('transaction.struk', ['transaction' => $transaction]);
+
+        return $struk->stream('struk-belanja.pdf');
     }
 }
