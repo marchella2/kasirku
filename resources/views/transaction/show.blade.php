@@ -42,6 +42,7 @@
                         <h5>Total Harga: <b>{{ $transaction->total_harga }}</b></h5>
                         <h5>Total Pembayaran: <b>{{ $transaction->total_bayar }}</b></h5>
                         <h5>Kembalian : <b>{{ $transaction->total_bayar - $transaction->total_harga }}</b></h5>
+                        <a href="{{ route('print-struk') }}" class="btn btn-success">Print Struk</a>
                     </div>
                 </div>
             </div>
