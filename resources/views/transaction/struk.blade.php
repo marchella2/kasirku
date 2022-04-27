@@ -25,7 +25,7 @@
                     Tanggal = {{ date('d F Y', strtotime($transaction->created_at)) }}
                 </div>
                 <div class="text-left ml-3">
-                    Oleh = {{ auth()->user()->name }}
+                    Kasir = {{ auth()->user()->name }}
                 </div>
                 <div class="card-body">
                     <table class="table table-sm">
