@@ -25,14 +25,16 @@ Route::get('/', function () {
 
 Auth::routes();
 
-// Route::get('/dashboard', [TestController::class, 'index']);
-
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::resource('barang', BarangController::class);
-Route::resource('user', UserController::class);
-Route::resource('cart-transaksi', CartController::class);
-Route::resource('transaksi', TransactionController::class);
+Route::middleware(['auth'])->group(function() {
+    Route::resource('barang', BarangController::class);
+    Route::resource('user', UserController::class);
+    Route::resource('transaksi', TransactionController::class);
 
+    Route::get('/print-laporan/{id}', [TransactionController::class, 'print_laporan'])->name('print-laporan');
+
+});
+
+Route::resource('cart-transaksi', CartController::class);
 Route::get('/print-struk', [TransactionController::class, 'print_struk'])->name('print-struk');
-Route::get('/print-laporan/{id}', [TransactionController::class, 'print_laporan'])->name('print-laporan');
