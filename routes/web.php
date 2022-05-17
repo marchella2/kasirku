@@ -35,3 +35,4 @@ Route::resource('cart-transaksi', CartController::class);
 Route::resource('transaksi', TransactionController::class);
 
 Route::get('/print-struk', [TransactionController::class, 'print_struk'])->name('print-struk');
+Route::get('/print-laporan/{id}', [TransactionController::class, 'print_laporan'])->name('print-laporan');
