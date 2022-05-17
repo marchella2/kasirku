@@ -19,7 +19,8 @@ class TransactionController extends Controller
      */
     public function index()
     {
-        //
+        $transaction = Transaction::get();
+        return view('transaction.index', compact('transaction'));
     }
 
     /**
@@ -73,9 +74,11 @@ class TransactionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Transaction $transaction)
+    public function show($id)
     {
-        return view('transaction.show', compact('transaction'));
+        $transaction = Transaction::find($id);
+        $products = TransactionDetail::with('barang')->get();
+        return view('transaction-detail.show', compact('transaction', 'products'));
     }
 
     /**
@@ -117,5 +120,12 @@ class TransactionController extends Controller
         $struk = PDF::loadView('transaction.struk', ['transaction' => $transaction]);
 
         return $struk->stream('struk-belanja.pdf');
+    }
+
+    public function print_laporan($id){
+        $transaction = Transaction::find($id);
+        $laporan = PDF::loadView('transaction.laporan', ['transaction' => $transaction]);
+
+        return $laporan->stream('laporan-belanja.pdf');
     }
 }
